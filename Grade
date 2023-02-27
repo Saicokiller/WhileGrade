@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Practicing
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            bool continuar = true;
+            bool continuar2 = true;
+
+            while (continuar)
+            {
+                Console.WriteLine("Digite a nota:");
+                string notaRead = Console.ReadLine();
+                double nota;
+
+                if (Double.TryParse(notaRead, out nota)) //expressao bool
+                {
+                    if (nota >= 7.0)
+                    {
+                        Console.WriteLine("Aprovado");
+                        Console.WriteLine("Nao fez mais que a obrigacao");
+                        continuar2 = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Recuperacao");
+                        continuar2 = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Valor invalido. Digite novamente.");
+                    continue; // Reinicie o loop sem executar o código abaixo
+                }
+
+                while (continuar2)
+                {
+                    Console.WriteLine("Deseja continuar? (S/N)");
+                    string resposta = Console.ReadLine();
+
+                    if (resposta != null && (resposta.ToUpper() == "N" || resposta.ToUpper() == "NAO"))
+                    {
+                        continuar2 = false;
+                        continuar = false;
+                    }
+                    else if (resposta == "")
+                    {
+                        Console.WriteLine("Digite comando valido");
+                        continue;
+                    }
+                    else if (resposta.ToUpper() == "S" || resposta.ToUpper() == "SIM")
+                    {
+                        continuar2 = false;
+                    }
+                }
+                
+                                   
+            }
+
+        }
+    }
+}
