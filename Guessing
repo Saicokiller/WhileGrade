@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Pract
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int palpite = 0;
+            Random rdm = new Random();
+
+            int numeroSecreto = rdm.Next(1, 16);
+            bool numeroEncontrado = false;
+            int tentativasRestantes = 5;
+            int tentativas = 0;
+            
+
+            while (tentativasRestantes > 0 && !numeroEncontrado)
+            {
+                Console.WriteLine("Inserir palpite:");
+                string entrada = Console.ReadLine();
+                int.TryParse(entrada, out palpite);
+
+                tentativas++;
+                tentativasRestantes--;
+
+                if(numeroSecreto == palpite)
+                {
+                    numeroEncontrado = true;
+
+                    Console.WriteLine("Numero encontrado em {0} tentativas", tentativas);
+                }
+                else if(palpite > numeroSecreto)
+                {
+                    //numeroEncontrado = true;
+                    Console.WriteLine("Palpite acima !!, chances {0}", tentativasRestantes);
+                }
+                else
+                {
+                    Console.WriteLine("Palpite abaixo !, chances {0}", tentativasRestantes);
+                }
+            }
+        }
+    }
+}
